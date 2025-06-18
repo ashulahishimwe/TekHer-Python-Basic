@@ -1,0 +1,855 @@
+---
+title: MatPlotlib
+Author:
+  '-name': ashura
+format:
+  revealjs:
+    code-fold: true
+jupyter: python3
+---
+
+
+# Practical_7: Matplotlib
+
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+```
+
+
+---
+
+### Exercise 1:
+Create a simple line plot for `y = x` for `x` values ranging from 0 to 10.
+
+```{python}
+# Exercise 1
+# | echo :True
+# | output : True
+x = np.linspace(0, 10, 100)
+y = x
+plt.plot(x, y)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Line plot of y = x')
+plt.grid(True)
+plt.show()
+```
+
+
+---
+
+### Exercise 2:
+Plot `y = x^2` using Matplotlib for `x` values between -10 and 10.
+
+```{python}
+# Exercise 2
+# | echo :True
+# | output : True
+x = np.linspace(-10, 10, 100)
+y = x**2
+plt.plot(x, y,"-o")
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Plot of y = x^2')
+plt.grid(True)
+plt.show()
+```
+
+
+---
+
+### Exercise 3:
+Create a scatter plot with 50 random points where x and y values are between 0 and 10.
+
+```{python}
+# Exercise 3
+# | echo :True
+# | output : True
+x = 10 * np.random.rand(50)
+y = 10 * np.random.rand(50)
+plt.scatter(x, y)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Scatter Plot of 50 Random Points')
+plt.grid(True)
+plt.show()
+```
+
+
+---
+
+### Exercise 4:
+Plot a sine wave using Matplotlib for `x` values between 0 and 2π.
+
+```{python}
+# Exercise 4
+# | echo :True
+# | output : True
+x = np.linspace(0, 2 * np.pi, 100)
+y = np.sin(x)
+plt.plot(x, y, color="g")
+plt.xlabel('x')
+plt.ylabel('sin(x)')
+plt.title('Sine Wave')
+plt.grid(True)
+plt.show()
+```
+
+
+---
+
+### Exercise 5:
+Create a bar chart for the following data: `categories = ['A', 'B', 'C', 'D']` and `values = [3, 7, 5, 9]`.
+
+```{python}
+# Exercise 5
+# | echo :True
+# | output : True
+categories = ['A', 'B', 'C', 'D']
+values = [3, 7, 5, 9]
+plt.bar(categories, values, color="r")
+plt.xlabel('Categories')
+plt.ylabel('Values')
+plt.title('Bar Chart of Categories and Values')
+plt.show()
+```
+
+
+---
+
+### Exercise 6:
+Create a histogram of 1000 random numbers generated from a normal distribution.
+
+```{python}
+# Exercise 6
+# | echo :True
+# | output : True
+data = np.random.randn(100)
+plt.hist(data, bins=30)
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+plt.title('Histogram of 100 Random Numbers (Normal Distribution)')
+plt.grid(True)
+plt.show()
+```
+
+
+---
+
+### Exercise 7:
+Plot two line plots on the same graph: `y1 = x^2` and `y2 = x^3` for `x` ranging from 0 to 10.
+
+```{python}
+# Exercise 7
+# | echo :True
+# | output : True
+x = np.linspace(0, 10, 100)
+y1 = x**2
+y2 = x**3
+plt.plot(x, y1, label='y = x^2')
+plt.plot(x, y2, label='y = x^3')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.show()
+```
+
+
+---
+
+### Exercise 8:
+Add titles, axis labels, and a legend to the plot in Exercise 7.
+
+```{python}
+# Exercise 8import matplotlib.pyplot as plt
+# | echo :True
+# | output : True
+import numpy as np
+
+x = np.linspace(0, 10, 100)
+y1 = x**2
+y2 = x**3
+
+plt.plot(x, y1, label='y = x^2')
+plt.plot(x, y2, label='y = x^3')
+
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Plots of y = x^2 and y = x^3')
+
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+
+---
+
+### Exercise 9:
+Create a subplot with 2 rows and 1 column. Plot `y1 = x^2` in the first subplot and `y2 = x^3` in the second.
+
+```{python}
+# Exercise 9
+x = np.linspace(0, 10, 100)
+y1 = x**2
+y2 = x**3
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(8, 6))
+
+ax1.plot(x, y1)
+ax1.set_title('Plot of y = x^2')
+ax1.set_xlabel('x')
+ax1.set_ylabel('y')
+ax1.grid(True)
+
+ax2.plot(x, y2,"-r")
+ax2.set_title('Plot of y = x^3')
+ax2.set_xlabel('x')
+ax2.set_ylabel('y')
+ax2.grid(True)
+
+plt.tight_layout() # Adjust layout to prevent overlapping
+plt.show()
+```
+
+
+---
+
+### Exercise 10:
+Use a different color and linestyle for each line in a plot of three functions: `y1 = x`, `y2 = x^2`, and `y3 = x^3`.
+
+```{python}
+# Exercise 10
+x = np.linspace(0, 10, 100)
+y1 = x
+y2 = x**2
+y3 = x**3
+plt.plot(x, y1, label='y = x', color='blue', linestyle='-')
+plt.plot(x, y2, label='y = x^2', color='yellow', linestyle='--')
+plt.plot(x, y3, label='y = x^3', color='green', linestyle=':')
+
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Plots of y = x, y = x^2, and y = x^3 with Different colors')
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+
+---
+
+### Exercise 11:
+Create a pie chart with 5 segments labeled A, B, C, D, and E, with values `[25, 35, 20, 15, 5]`.
+
+```{python}
+# Exercise 11
+labels = ['A', 'B', 'C', 'D', 'E']
+values = [25, 35, 20, 15, 5]
+plt.figure(figsize=(4, 4))
+plt.pie(values, labels=labels, autopct='%1.1f%%', startangle=90)
+plt.title('Pie Chart with 5 Segments')
+plt.show()
+```
+
+
+---
+
+### Exercise 12:
+Create a horizontal bar chart with `categories = ['A', 'B', 'C', 'D']` and `values = [3, 7, 5, 9]`.
+
+```{python}
+# Exercise 12
+categories = ['A', 'B', 'C', 'D']
+values = [3, 7, 5, 9]
+
+plt.barh(categories, values,color= "g")
+plt.xlabel('Values')
+plt.ylabel('Categories')
+plt.title('Horizontal Bar Chart of Categories and Values')
+plt.show()
+```
+
+
+---
+
+### Exercise 13:
+Change the figure size of a line plot to 10x6 inches.
+
+```{python}
+# Exercise 13
+categories = ['A', 'B', 'C', 'D']
+values = [3, 7, 5, 9]
+plt.figure(figsize=(10, 6))
+plt.barh(categories, values,color= "g")
+plt.xlabel('Values')
+plt.ylabel('Categories')
+plt.title('Horizontal Bar Chart of Categories and Values')
+plt.show()
+```
+
+
+---
+
+### Exercise 14:
+Plot a filled area under the curve of `y = x^2` for `x` ranging from 0 to 10.
+
+```{python}
+# Exercise 14
+x = np.linspace(0, 10, 100)
+y = x**2
+plt.plot(x, y, label='y = x^2')
+plt.fill_between(x, y, 0, alpha=0.3) # Fill area below the curve
+
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Filled Area Under the Curve of y = x^2')
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+
+---
+
+### Exercise 15:
+Change the style of the plot to `ggplot` and replot the sine wave from Exercise 4.
+
+```{python}
+# Exercise 15
+plt.style.use('ggplot')
+x = np.linspace(0, 2 * np.pi, 100)
+y = np.sin(x)
+plt.plot(x, y)
+plt.xlabel('x')
+plt.ylabel('sin(x)')
+plt.title('Sine Wave with ggplot Style')
+plt.grid(True)
+plt.show()
+```
+
+
+---
+
+### Exercise 16:
+Create a stacked bar chart for the following data: `Group A = [3, 5, 7]`, `Group B = [2, 6, 4]`, and `categories = ['X', 'Y', 'Z']`.
+
+```{python}
+# Exercise 16
+categories = ['X', 'Y', 'Z']
+group_a_values = [3, 5, 7]
+group_b_values = [2, 6, 4]
+plt.bar(categories, group_a_values, label='Group A')
+plt.bar(categories, group_b_values, bottom=group_a_values, label='Group B')
+
+plt.xlabel('Categories')
+plt.ylabel('Values')
+plt.title('Stacked Bar Chart')
+plt.legend()
+plt.show()
+```
+
+
+---
+
+### Exercise 17:
+Create a plot with multiple subplots in a 2x2 grid. Plot `y1 = x`, `y2 = x^2`, `y3 = x^3`, and `y4 = x^4`.
+
+```{python}
+# Exercise 17
+x = np.linspace(0, 10, 100)
+y1 = x
+y2 = x**2
+y3 = x**3
+y4 = x**4
+fig, axs = plt.subplots(2, 2, figsize=(10, 8))
+
+axs[0, 0].plot(x, y1)
+axs[0, 0].set_title('y = x')
+axs[0, 0].grid(True)
+
+axs[0, 1].plot(x, y2)
+axs[0, 1].set_title('y = x^2')
+axs[0, 1].grid(True)
+
+axs[1, 0].plot(x, y3)
+axs[1, 0].set_title('y = x^3')
+axs[1, 0].grid(True)
+
+axs[1, 1].plot(x, y4)
+axs[1, 1].set_title('y = x^4')
+axs[1, 1].grid(True)
+
+plt.tight_layout() # Adjust layout to prevent overlapping
+plt.show()
+```
+
+
+---
+
+### Exercise 18:
+Create a heatmap using a 2D array of random values with shape (5, 5).
+
+```{python}
+# Exercise 18
+data = np.random.rand(5, 5)
+plt.imshow(data, cmap='viridis', interpolation='nearest')
+plt.colorbar(label='Value')
+plt.title('Heatmap of a 5x5 Random Array')
+plt.show()
+```
+
+
+---
+
+### Exercise 19:
+Add error bars to a bar plot with `categories = ['A', 'B', 'C', 'D']` and `values = [3, 7, 5, 9]`, assuming the error is 1 for each value.
+
+```{python}
+# Exercise 19
+categories = ['A', 'B', 'C', 'D']
+values = [3, 7, 5, 9]
+errors = [1, 1, 1, 1] # Error of 1 for each bar
+plt.bar(categories, values, yerr=errors, capsize=5)
+plt.xlabel('Categories')
+plt.ylabel('Values')
+plt.title('Bar Chart with Error Bars')
+plt.show()
+```
+
+
+---
+
+### Exercise 20:
+Plot a sine wave using a dashed line and a cosine wave using a solid line on the same plot.
+
+```{python}
+# Exercise 
+x = np.linspace(0, 2 * np.pi, 100)
+y_sin = np.sin(x)
+y_cos = np.cos(x)
+plt.plot(x, y_sin, label='Sine Wave', linestyle='--')
+plt.plot(x, y_cos, label='Cosine Wave', linestyle='-')
+
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Sine and Cosine Waves')
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+
+---
+
+### Exercise 21:
+Plot a contour plot for the function `z = sin(x) + cos(y)` over a grid of `x` and `y` values ranging from -5 to 5.
+
+```{python}
+# Exercise 21
+x = np.linspace(-5, 5, 100)
+y = np.linspace(-5, 5, 100)
+X, Y = np.meshgrid(x, y)
+Z = np.sin(X) + np.cos(Y)
+plt.contour(X, Y, Z, cmap='viridis')
+plt.contourf(X, Y, Z, cmap='viridis', alpha=0.5)
+plt.colorbar(label='z = sin(x) + cos(y)')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Contour Plot of z = sin(x) + cos(y)')
+plt.show()
+```
+
+
+---
+
+### Exercise 22:
+Create a box plot for a dataset generated with 100 random numbers from a normal distribution.
+
+```{python}
+# Exercise 22
+data = np.random.randn(100)
+plt.boxplot(data)
+plt.ylabel('Value')
+plt.title('Box Plot of 100 Random Numbers (Normal Distribution)')
+plt.show()
+```
+
+
+---
+
+### Exercise 23:
+Create a scatter plot with a color map applied to the points, where the color represents the value of the points.
+
+```{python}
+# Exercise 23
+x = np.random.rand(50) * 10
+y = np.random.rand(50) * 10
+colors = np.random.rand(50) # Values for color mapping
+plt.scatter(x, y, c=colors, cmap='viridis')
+plt.colorbar(label='Color Value')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Scatter Plot with Colormap')
+plt.show()
+```
+
+
+---
+
+### Exercise 24:
+Use Matplotlib to display an image from a file.
+
+```{python}
+# Exercise 24
+import matplotlib.image as mpimg
+img = mpimg.imread(r"C:\Users\Ashulah\Downloads\balconies.png\balconies.png") # Replace with your image file name
+plt.imshow(img)
+plt.axis('off') # Turn off axes
+plt.title('My Image with Matplotlib')
+plt.show()
+```
+
+
+---
+
+### Exercise 25:
+Create a plot with logarithmic scaling on both axes.
+
+```{python}
+# Exercise 25
+x = np.linspace(1, 10, 100)
+y = np.exp(x)
+plt.plot(x, y,color="green")
+plt.xscale('log')
+plt.yscale('log')
+
+plt.xlabel('x (log scale)')
+plt.ylabel('y (log scale)')
+plt.title('Plot with Logarithmic Scales on Both Axes')
+plt.grid(True)
+plt.show()
+```
+
+
+---
+
+### Exercise 26:
+Create a 3D plot of the function `z = x^2 + y^2` over a grid of `x` and `y` values.
+
+```{python}
+# Exercise 26
+from mpl_toolkits.mplot3d import Axes3D
+x = np.linspace(-5, 5, 50)
+y = np.linspace(-5, 5, 50)
+X, Y = np.meshgrid(x, y)
+Z = X**2 + Y**2
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111, projection='3d')
+
+ax.plot_surface(X, Y, Z, cmap='viridis')
+
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+ax.set_title('3D Plot of z = x^2 + y^2')
+
+plt.show()
+```
+
+
+---
+
+### Exercise 27:
+Create a radar chart with 5 variables and random values between 0 and 1.
+
+```{python}
+# Exercise 27
+categories = ['Variable A', 'Variable B', 'Variable C', 'Variable D', 'Variable E']
+values = np.random.rand(len(categories)) # Random values 0 and 1
+values = np.concatenate((values, [values[0]]))
+angles = np.linspace(0, 2 * np.pi, len(categories), endpoint=False)
+angles = np.concatenate((angles, [angles[0]])) # Append the first angle to close the plot
+
+fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(polar=True))
+
+ax.plot(angles, values, 'o-', linewidth=2)
+ax.fill(angles, values, alpha=0.25)
+ax.set_thetagrids(angles[:-1] * 180/np.pi, categories) # Use angles[:-1] and the original categories
+ax.set_title('Radar Chart', va='bottom')
+ax.grid(True)
+
+plt.show()
+```
+
+
+---
+
+### Exercise 28:
+Create a violin plot to show the distribution of a dataset generated with 1000 random numbers from a normal distribution.
+
+```{python}
+# Exercise 28
+data = np.random.randn(1000)
+plt.violinplot(data, showmeans=False, showmedians=True)
+plt.ylabel('Value')
+plt.title('Violin Plot of 1000 Random Numbers (Normal Distribution)')
+plt.xticks([1], ['Data']) # Set a single tick label for clarity
+plt.show()
+```
+
+
+---
+
+### Exercise 29:
+Create a bar chart with different colors for each bar.
+
+```{python}
+# Exercise 29
+categories = ['A', 'B', 'C', 'D', 'E']
+values = [4, 8, 6, 10, 5]
+colors = ['red', 'blue', 'green', 'purple', 'orange'] # List of colors
+plt.bar(categories, values, color=colors)
+plt.xlabel('Categories')
+plt.ylabel('Values')
+plt.title('Bar Chart with Different Colors per Bar')
+plt.show()
+```
+
+
+---
+
+### Exercise 30:
+Create a stem plot for the function `y = sin(x)` for `x` values between 0 and 2π.
+
+```{python}
+# Exercise 30
+x = np.linspace(0, 2 * np.pi, 20) # Use fewer points for clearer stems
+y = np.sin(x)
+plt.stem(x, y, linefmt='--', markerfmt='o', basefmt=' ')
+plt.xlabel('x')
+plt.ylabel('sin(x)')
+plt.title('Stem Plot of sin(x)')
+plt.grid(True)
+plt.show()
+```
+
+
+---
+
+### Exercise 31:
+Create a scatter plot with markers of different sizes.
+
+```{python}
+# Exercise 31
+x = np.random.rand(50) * 10
+y = np.random.rand(50) * 10
+sizes = np.random.rand(50) * 200 # Random sizes for markers (adjust multiplier as needed)
+plt.scatter(x, y, s=sizes, alpha=0.5) # alpha controls transparency
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Scatter Plot with Different Marker Sizes')
+plt.grid(True)
+plt.show()
+```
+
+
+---
+
+### Exercise 32:
+Plot a cumulative histogram of 1000 random numbers generated from a uniform distribution.
+
+```{python}
+# Exercise 32
+data = np.random.rand(1000)
+plt.hist(data, bins=30, cumulative=True, density=True)
+plt.xlabel('Value')
+plt.ylabel('Cumulative Probability')
+plt.title('Cumulative Histogram of 1000 Random Numbers (Uniform Distribution)')
+plt.grid(True)
+plt.show()
+```
+
+
+---
+
+### Exercise 33:
+Create a pie chart with custom colors for each segment.
+
+```{python}
+# Exercise 33
+```
+
+
+---
+
+### Exercise 34:
+Create a plot with twin y-axes where one axis represents `y = x` and the other represents `y = x^2`.
+
+```{python}
+# Exercise 34
+```
+
+
+---
+
+### Exercise 35:
+Plot a density plot of 1000 random values from a normal distribution.
+
+```{python}
+# Exercise 35
+```
+
+
+---
+
+### Exercise 36:
+Create a histogram and add a kernel density estimate (KDE) to the plot.
+
+```{python}
+# Exercise 36
+```
+
+
+---
+
+### Exercise 37:
+Add gridlines to a line plot and change the color and linestyle of the grid.
+
+```{python}
+# Exercise 37
+```
+
+
+---
+
+### Exercise 38:
+Create a bar chart with annotations showing the height of each bar above the bar.
+
+```{python}
+# Exercise 38
+```
+
+
+---
+
+### Exercise 39:
+Create a filled contour plot for the function `z = x^2 + y^2` over a grid of `x` and `y` values.
+
+```{python}
+# Exercise 39
+```
+
+
+---
+
+### Exercise 40:
+Create a stacked area plot using three random datasets.
+
+```{python}
+# Exercise 40
+```
+
+
+---
+
+### Exercise 41:
+Create a bar chart with error bars, where the error values are proportional to the bar values.
+
+```{python}
+# Exercise 41
+```
+
+
+---
+
+### Exercise 42:
+Create a wind rose chart using random wind direction and speed data.
+
+```{python}
+# Exercise 42
+```
+
+
+---
+
+### Exercise 43:
+Plot a cumulative frequency curve for a dataset of 100 random numbers.
+
+```{python}
+# Exercise 43
+```
+
+
+---
+
+### Exercise 44:
+Create a waterfall chart using Matplotlib to show the changes in a sequence of values.
+
+```{python}
+# Exercise 44
+```
+
+
+---
+
+### Exercise 45:
+Use the `imshow` function to display a 10x10 matrix of random values as an image.
+
+```{python}
+# Exercise 45
+```
+
+
+---
+
+### Exercise 46:
+Create a line plot with different markers for each point.
+
+```{python}
+# Exercise 46
+```
+
+
+---
+
+### Exercise 47:
+Create a time series plot using Matplotlib and plot random data over a range of dates.
+
+```{python}
+# Exercise 47
+```
+
+
+---
+
+### Exercise 48:
+Create a bar chart with bars colored by category.
+
+```{python}
+# Exercise 48
+```
+
+
+---
+
+### Exercise 49:
+Create a radar chart to visualize the strengths of five different attributes.
+
+```{python}
+# Exercise 49
+```
+
+
+---
+
+### Exercise 50:
+Create a 3D scatter plot with random values for x, y, and z.
+
+```{python}
+# Exercise 50
+```
+
+
+---
+
+
